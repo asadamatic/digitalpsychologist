@@ -26,42 +26,44 @@ class SessionsScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: _sessionController.sessions.length == 0
-          ? Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.add_circle_rounded,
-                    color: Colors.grey,
-                    size: 54,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Text(
-                      'No sessions yet...\n\nPlease tap the "+" button at the bottom left in order to create a new session',
-                      style: GoogleFonts.quicksand(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.grey,
-                      ),
-                      textAlign: TextAlign.center,
+      body: GetBuilder<SessionController>(
+        builder: (controller) => _sessionController.sessions.length == 0
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.add_circle_rounded,
+                      color: Colors.grey,
+                      size: 54,
                     ),
-                  ),
-                ],
-              ),
-            )
-          : ListView.builder(
-              padding: EdgeInsets.symmetric(vertical: 15),
-              itemCount: _sessionController.sessions?.length ?? 0,
-              itemBuilder: (context, index) {
-                return SessionCard(
-                  index: index,
-                  session: _sessionController.sessions[index],
-                );
-              }),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: Text(
+                        'No sessions yet...\n\nPlease tap the "+" button at the bottom left in order to create a new session',
+                        style: GoogleFonts.quicksand(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            : ListView.builder(
+                padding: EdgeInsets.symmetric(vertical: 15),
+                itemCount: _sessionController.sessions?.length ?? 0,
+                itemBuilder: (context, index) {
+                  return SessionCard(
+                    index: index,
+                    session: _sessionController.sessions[index],
+                  );
+                }),
+      ),
       floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.amber.shade700,
           child: Icon(

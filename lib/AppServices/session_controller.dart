@@ -18,5 +18,6 @@ class SessionController extends GetxController {
   addSession(Session session) async {
     await SessionsTable().insertSession(session);
     sessions.add(session);
+    update();
   }
 }
