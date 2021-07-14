@@ -7,7 +7,7 @@ class Session {
   Map<String, dynamic> toMap(){
 
     return {
-      'time': time,
+      'time': time.toString(),
       'stressLevel': stressLevel
     };
   }

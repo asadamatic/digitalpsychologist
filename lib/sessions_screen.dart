@@ -1,4 +1,4 @@
-import 'package:digitalpsychologist/AppServices/session_controller.dart';
+import 'package:digitalpsychologist/session_controller.dart';
 import 'package:digitalpsychologist/CustomWidgets/session_card.dart';
 import 'package:digitalpsychologist/new_session.dart';
 import 'package:flutter/material.dart';
@@ -15,18 +15,20 @@ class SessionsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sessions'),
+        automaticallyImplyLeading: false,
       ),
-      body: ListView.builder(
-          itemCount: _sessionController.sessions?.length ?? 0,
-          itemBuilder: (context, index){
+      body: Obx(() => ListView.builder(
+            itemCount: _sessionController.sessions?.length ?? 0,
+            itemBuilder: (context, index){
 
-            return SessionCard(index: index, session: _sessionController.sessions[index],);
-          }),
+              return SessionCard(index: index, session: _sessionController.sessions[index],);
+            }),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(
           Icons.add,
         ),
-        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => NewSessions()))
+        onPressed: () => Get.to(NewSessions())
       ),
     );
   }
