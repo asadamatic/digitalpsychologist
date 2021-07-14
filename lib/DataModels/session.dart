@@ -4,11 +4,7 @@ class Session {
 
   Session({this.time, this.stressLevel});
 
-  Map<String, dynamic> toMap(){
-
-    return {
-      'time': time,
-      'stressLevel': stressLevel
-    };
+  Map<String, dynamic> toMap() {
+    return {'time': time.toString(), 'stressLevel': stressLevel};
   }
 }

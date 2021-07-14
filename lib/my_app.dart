@@ -11,21 +11,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        title: 'Digital Psychologist',
-        debugShowCheckedModeBanner: false,
-
-      getPages: AppPages.routes,
-      initialRoute: Routes.SESSIONSSCREEN,
-        theme: ThemeData(
-          buttonTheme: ButtonThemeData(
-            buttonColor: Color(0xffFF7D97),
-            textTheme: ButtonTextTheme.primary
-          ),
-          primaryColor: Color(0xffFF7D97),
-          accentColor: Color(0xffFF9EB1),
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: Wrapper(),
+      title: 'Digital Psychologist',
+      debugShowCheckedModeBanner: false,
+      // getPages: AppPages.routes,
+      // initialRoute: Routes.SESSIONSSCREEN,
+      // theme: ThemeData(
+      //   brightness: Brightness.dark,
+      //   buttonTheme: ButtonThemeData(
+      //     buttonColor: Color(0xffFF7D97),
+      //     textTheme: ButtonTextTheme.primary,
+      //   ),
+      //   // primaryColor: Colors.blueGrey[900],
+      //   accentColor: Color(0xffFF9EB1),
+      //   visualDensity: VisualDensity.adaptivePlatformDensity,
+      // ),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      home: SplashScreen(),
     );
   }
 }

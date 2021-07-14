@@ -4,15 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OneTimeScreenWrapper extends StatefulWidget {
-
   @override
   _OneTimeScreenWrapperState createState() => _OneTimeScreenWrapperState();
 }
 
 class _OneTimeScreenWrapperState extends State<OneTimeScreenWrapper> {
-
-  void selectScreen() async{
-
+  void selectScreen() async {
     setState(() {
       setVisitingValue();
     });
@@ -20,22 +17,18 @@ class _OneTimeScreenWrapperState extends State<OneTimeScreenWrapper> {
 
   @override
   Widget build(BuildContext context) {
-
     return FutureBuilder<bool>(
       future: getVisitingValue(),
-      builder: (BuildContext context, AsyncSnapshot<bool> snapshot){
-
-        if (snapshot.hasData){
-
-          if (snapshot.data == true){
-
+      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+        if (snapshot.hasData) {
+          if (snapshot.data == true) {
             return SessionsScreen();
-          }else{
-
-            return WelcomeScreen(selectScreen: selectScreen,);
+          } else {
+            return WelcomeScreen(
+              selectScreen: selectScreen,
+            );
           }
-        }else{
-
+        } else {
           return Scaffold();
         }
       },
@@ -43,12 +36,12 @@ class _OneTimeScreenWrapperState extends State<OneTimeScreenWrapper> {
   }
 }
 
-Future<bool> getVisitingValue() async{
+Future<bool> getVisitingValue() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   return prefs.getBool('visitWelcomeScreenValue') ?? false;
 }
 
-setVisitingValue() async{
+setVisitingValue() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.setBool('visitWelcomeScreenValue', true);
 }

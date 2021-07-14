@@ -5,17 +5,18 @@ import 'package:get/get.dart';
 import 'package:sqflite/sqflite.dart';
 
 class SessionController extends GetxController {
-
   RxList sessions = <Session>[].obs;
-  
-  SessionController(){
-    
+
+  SessionController() {
     getSessions();
   }
 
-  getSessions() async{
-
+  getSessions() async {
     sessions.value = await SessionsTable().getSessions();
+  }
 
+  addSession(Session session) async {
+    await SessionsTable().insertSession(session);
+    sessions.add(session);
   }
 }
